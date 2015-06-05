@@ -9,6 +9,7 @@
 		TODO: Actually make a site
 		</div>
 		<a href="javascript:(function() {function sayPrices(type){var prices = {'Sketch or Song': {usd: 5.00,eur: 4.00,gbp: 3.00},'Lineart': {usd: 15.00,eur: 12.00,gbp: 9.00},'Flat Colored': {usd: 20.00,eur: 16.00,gbp: 12.00},'Lineart + Color': {usd: 30.00,eur: 24.00,gbp: 18.00},'Painted': {usd: 60.00,eur: 48.00,gbp: 36.00}};var unitSymbols = {usd: '$',eur: '€',gbp: '£'};if (['usd', 'eur', 'gbp'].indexOf(type.toLowerCase()) == -1){alert('This is not a valid currency! Valid currency: usd, eur, gbp');}else{var msg = '';for (var i in prices){msg += i + ': ' + unitSymbols[type.toLowerCase()] + prices[i][type.toLowerCase()].toFixed(2) + ', ';}msg = msg.substr(0, msg.length - 2);socket.emit('chatMsg', {msg: msg});}}var elem = document.createElement('div');elem.style.position = 'fixed';elem.style.top = '10px';elem.style.left = '10px';['usd', 'eur', 'gbp'].forEach(function(symbol) {var btn = document.createElement('button');btn.textContent = symbol;btn.onclick = function() {sayPrices(symbol);};elem.appendChild(btn);});document.body.appendChild(elem);})();void(0);">Bookmark this!</a>
-		<img src="http://i.imgur.com/xFZbNeG.png"></img>
+		<br />When clicking...
+		<br /><img src="http://i.imgur.com/xFZbNeG.png"></img>
 	</body>
 </html>
