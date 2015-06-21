@@ -21,6 +21,7 @@
 
   <br />Metadata:<br />
   <div id="metadata">
+    Listeners: <span id="listeners">0</span><br />
     <span id="metaartist"></span> - <span id="metatitle"></span><br />
     <span id="metaalbum"></span><br />
     <img id="metaalbumart" src=""></img>
@@ -51,10 +52,11 @@
 }
 
 function updateMetadata(metadata) {
-  document.getElementById("metaartist").innerHTML = metadata.artist;
-  document.getElementById("metatitle").innerHTML = metadata.title;
-  document.getElementById("metaalbum").innerHTML = metadata.album;
-  document.getElementById("metaalbumart").src = metadata.imageurl;
+  document.getElementById("metaartist").innerHTML = metadata.track.artist;
+  document.getElementById("metatitle").innerHTML = metadata.track.title;
+  document.getElementById("metaalbum").innerHTML = metadata.track.album;
+  document.getElementById("metaalbumart").src = metadata.track.imageurl;
+  document.getElementById("listeners").innerHTML = metadata.listeners;
 }
 
 document.body.onload = function() {
@@ -116,7 +118,7 @@ document.body.onload = function() {
       if (!data)
         console.warn("Warning: Failed to get metadata!");
       else {
-        updateMetadata(data.data[0].track);
+        updateMetadata(data.data[0]);
       }
     });
   };
