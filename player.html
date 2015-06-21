@@ -60,6 +60,11 @@ function updateMetadata(metadata) {
 }
 
 document.body.onload = function() {
+  if (window.localStorage.volume)
+  {
+    document.getElementById('volume').value = window.localStorage.volume;
+    player.volume = window.localStorage.volume / 100;
+  }
   window.player = document.getElementById("player");
   window.playerSrc = player.currentSrc;
 
@@ -82,10 +87,12 @@ document.body.onload = function() {
   });
 
   document.getElementById('volume').addEventListener('input', function(evt) {
+    window.localStorage.volume = evt.target.value;
     player.volume = evt.target.value / 100;
   });
 
   document.getElementById('volume').addEventListener('change', function(evt) {
+    window.localStorage.volume = evt.target.value;
     player.volume = evt.target.value / 100;
   });
 
