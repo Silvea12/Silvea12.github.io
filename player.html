@@ -1,0 +1,147 @@
+<!DOCTYPE html5>
+<html>
+<head>
+  <title>Radio thing</title>
+</head>
+<body>
+
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" target="_blank">Reference for player</a><br />
+
+  <div id="controls">
+    <i>Reference icons:</i> &#9654; &#9658; &#9724;<br />
+    <i>Play/pause:</i> <button id="play">&#9658;</button><br />
+    <i>Volume:</i> <input type="range" id="volume" min="0" max="100" value="100" step="1"></input><br />
+    <i>State:</i> <span id="state">Stopped</span>
+  </div>
+
+  <audio id="player" style="display: none;" preload="none">
+    <source src="http://radio.ponytonite.com:8000/stream" type="audio/mpeg" />
+    <source src="http://radio.ponytonite.com:8000/stream_ogg" type="audio/ogg" />
+  </audio>
+
+  <br />Metadata:<br />
+  <div id="metadata">
+    <span id="metaartist"></span> - <span id="metatitle"></span><br />
+    <span id="metaalbum"></span><br />
+    <img id="metaalbumart" src=""></img>
+  </div>
+
+  <script type="text/javascript">
+  function getJSON(uri, callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', uri, true);
+
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+      // Success!
+      var data = JSON.parse(request.responseText);
+      callback && callback(data);
+    } else {
+      // We reached our target server, but it returned an error
+      callback && callback(false);
+    }
+  };
+
+  request.onerror = function(err) {
+    callback && callback(false);
+    // There was a connection error of some sort
+  };
+
+  request.send();
+}
+
+function updateMetadata(metadata) {
+  document.getElementById("metaartist").innerHTML = metadata.artist;
+  document.getElementById("metatitle").innerHTML = metadata.title;
+  document.getElementById("metaalbum").innerHTML = metadata.album;
+  document.getElementById("metaalbumart").src = metadata.imageurl;
+}
+
+document.body.onload = function() {
+  window.player = document.getElementById("player");
+  window.playerSrc = player.currentSrc;
+
+  document.getElementById("play").addEventListener('click', function(evt) {
+    if (player.paused) {
+      if (window.playerSrc)
+        player.src = window.playerSrc;
+
+      //player.load();
+      player.play();
+    } else {
+      if (!window.playerSrc)
+        window.playerSrc = player.currentSrc;
+
+      player.pause();
+      player.src = "";
+
+      //player.load();
+    }
+  });
+
+  document.getElementById('volume').addEventListener('input', function(evt) {
+    player.volume = evt.target.value / 100;
+  });
+
+  document.getElementById('volume').addEventListener('change', function(evt) {
+    player.volume = evt.target.value / 100;
+  });
+
+  player.addEventListener('play', function(evt) {
+    document.getElementById("play").innerHTML = "&#9724;";
+    document.getElementById("state").innerHTML = "Buffering";
+  });
+  player.addEventListener('abort', function(evt) {
+    console.log("ABORTED");
+    document.getElementById("play").innerHTML = "&#9658;";
+    document.getElementById("state").innerHTML = "Stopped";
+  });
+  player.addEventListener('pause', function(evt) {
+    console.log("PAUSED");
+    document.getElementById("play").innerHTML = "&#9658;";
+    document.getElementById("state").innerHTML = "Stopped";
+  });
+
+  player.addEventListener('suspend', function(evt) {
+    console.log("SUSPEND");
+  });
+
+  player.addEventListener('playing', function(evt) {
+    console.log("PLAYING");
+    document.getElementById("state").innerHTML = "Playing";
+  });
+
+  var getMeta = function() {
+    getJSON("http://radio.ponytonite.com:2199/rpc/ponytonite/streaminfo.get", function(data) {
+      if (!data)
+        console.warn("Warning: Failed to get metadata!");
+      else {
+        updateMetadata(data.data[0].track);
+      }
+    });
+  };
+  
+  setInterval(getMeta, 15000);
+  getMeta();
+
+  player.addEventListener('progress', function(evt) {
+    console.log("PROGRESS");
+    if (player.buffered.length != 0)
+    {
+      if (window.chrome && !window.isOpera) // Google Chrome
+        console.log(player.buffered.end(player.buffered.length - 1) - player.currentTime);
+      else if (typeof InstallTrigger !== 'undefined') // Firefox
+        console.log(player.buffered.end(player.buffered.length - 1));
+      else // Another browser
+        console.log(player.currentTime, player.buffered.end(player.buffered.length - 1));
+    }
+    else
+    {
+      console.log(player.buffered.length);
+    }
+  });
+};
+</script>
+
+</body>
+</html>
