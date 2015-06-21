@@ -9,7 +9,7 @@
 
   <div id="controls">
     <i>Reference icons:</i> &#9654; &#9658; &#9724;<br />
-    <i>Play/pause:</i> <button id="play">&#9658;</button><br />
+    <i>Play/pause:</i> <button id="play">&#9654;</button><br />
     <i>Volume:</i> <input type="range" id="volume" min="0" max="100" value="100" step="1"></input><br />
     <i>State:</i> <span id="state">Stopped</span>
   </div>
@@ -93,12 +93,12 @@ document.body.onload = function() {
   });
   player.addEventListener('abort', function(evt) {
     console.log("ABORTED");
-    document.getElementById("play").innerHTML = "&#9658;";
+    document.getElementById("play").innerHTML = "&#9654;";
     document.getElementById("state").innerHTML = "Stopped";
   });
   player.addEventListener('pause', function(evt) {
     console.log("PAUSED");
-    document.getElementById("play").innerHTML = "&#9658;";
+    document.getElementById("play").innerHTML = "&#9654;";
     document.getElementById("state").innerHTML = "Stopped";
   });
 
