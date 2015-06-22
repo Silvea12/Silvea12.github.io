@@ -14,10 +14,11 @@
     <i>State:</i> <span id="state">Stopped</span>
   </div>
 
+  <!--WE NO LONGER NEED THIS
   <audio id="player" style="display: none;" preload="none">
-    <source src="http://radio.ponytonite.com:8000/stream" type="audio/mpeg" />
     <source src="http://radio.ponytonite.com:8000/stream_ogg" type="audio/ogg" />
-  </audio>
+    <source src="http://radio.ponytonite.com:8000/stream" type="audio/mpeg" />
+  </audio>-->
 
   <br />Metadata:<br />
   <div id="metadata">
@@ -60,12 +61,25 @@ function updateMetadata(metadata) {
 }
 
 document.body.onload = function() {
+  //window.player = document.getElementById("player");
+  window.player = new Audio();
+  player.preload = "none";
   if (window.localStorage.volume)
   {
     document.getElementById('volume').value = window.localStorage.volume;
     player.volume = window.localStorage.volume / 100;
   }
-  window.player = document.getElementById("player");
+  if (player.canPlayType("audio/ogg") !== "no" && player.canPlayType("audio/ogg") !== "")
+    player.src = "http://radio.ponytonite.com:8000/stream_ogg";
+  else if (player.canPlayType("audio/mpeg") !== "no" && player.canPlayType("audio/mpeg") !== "")
+    player.src = "http://radio.ponytonite.com:8000/stream";
+  else
+  {
+    player.src = "";
+    document.getElementById("controls").innerHTML = "<b>ERROR: NO PLAYABLE AUDIO SOURCES FOUND!</b>";
+    alert("ERROR: CANNOT PLAY ANY TYPE!");
+  }
+
   window.playerSrc = player.currentSrc;
 
   document.getElementById("play").addEventListener('click', function(evt) {
