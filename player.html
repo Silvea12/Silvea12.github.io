@@ -55,7 +55,7 @@
 function updateMetadata(metadata) {
   document.getElementById("metaartist").innerHTML = metadata.track.artist;
   document.getElementById("metatitle").innerHTML = metadata.track.title;
-  document.getElementById("metaalbum").innerHTML = metadata.track.album;
+  document.getElementById("metaalbum").innerHTML = metadata.track.album || "N/A";
   document.getElementById("metaalbumart").src = metadata.track.imageurl;
   document.getElementById("listeners").innerHTML = metadata.listeners;
 }
