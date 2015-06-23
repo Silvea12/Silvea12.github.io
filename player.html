@@ -91,6 +91,8 @@
   </div>
 
   <script type="text/javascript">
+  for (var i=0;i<25;++i)
+    document.body.innerHTML += "<br />";
   function getJSON(uri, callback) {
     var request = new XMLHttpRequest();
     request.open('GET', uri, true);
@@ -183,6 +185,25 @@ document.body.onload = function() {
       //player.load();
     }
   });
+
+  var scrollListener = function(evt) {
+    evt.preventDefault();
+    var direction = -evt.detail || evt.wheelDelta;
+    var volume = player.volume * 100;
+    if (direction > 0)
+      volume = Math.min(volume + 5, 100);
+    else
+      volume = Math.max(volume - 5, 0);
+    document.getElementById('volume').value = volume;
+    window.localStorage.volume = volume
+    player.volume = volume / 100;
+    console.log("SCROLLWHEEL");
+    return false;
+  }
+
+  document.getElementById('player').addEventListener('DOMMouseScroll', scrollListener);
+
+  document.getElementById('player').addEventListener('mousewheel', scrollListener);
 
   document.getElementById('volume').addEventListener('input', function(evt) {
     window.localStorage.volume = evt.target.value;
