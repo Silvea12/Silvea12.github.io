@@ -130,7 +130,7 @@ function updateMetadata(metadata) {
     if (document.getElementById("playerTitle").clientWidth < document.getElementById("playerTitle").scrollWidth ||
       document.getElementById("playerTitle").clientHeight < document.getElementById("playerTitle").scrollHeight)
     {
-      window.scrollCharacters = metadata.track.title + "\xa0|\xa0";
+      window.scrollCharacters = metadata.track.title.replace(/ /g, "\xa0") + "\xa0|\xa0";
       window.scrollInterval = window.setInterval(function() {
         window.scrollCharacters = window.scrollCharacters.substr(1) + window.scrollCharacters.charAt(0);
         document.getElementById("playerTitle").innerHTML = window.scrollCharacters;
