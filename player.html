@@ -42,7 +42,7 @@
       font-size: 60px; /* 60 - 40 */
       height: 70px;
       width: 500px;
-      border: 1px solid black;
+      /*border: 1px solid black;*/
       overflow: none;
       top: 10px; /* 40 - (60/2) */
       left: 97px;
@@ -115,11 +115,11 @@
 
 function updateMetadata(metadata) {
   document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
-  //document.getElementById("playerTitle").innerHTML = metadata.track.title;
-  document.getElementById("playerTitle").innerHTML = "Pony Should Pony Pony";
+  document.getElementById("playerTitle").innerHTML = metadata.track.title;
+  //document.getElementById("playerTitle").innerHTML = "Pony Should Pony Pony";
   if (document.getElementById("playerTitle").clientWidth < document.getElementById("playerTitle").scrollWidth ||
     document.getElementById("playerTitle").clientHeight < document.getElementById("playerTitle").scrollHeight)
-    alert("OVERFLOWED");
+    console.log("OVERFLOWED");
   document.getElementById("playerArtist").innerHTML = metadata.track.artist;
   document.getElementById("playerAlbum").innerHTML = metadata.track.album;
   document.getElementById("playerListeners").innerHTML = "Listeners: " + metadata.listeners;
