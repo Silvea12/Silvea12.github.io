@@ -116,10 +116,10 @@
 
 function updateMetadata(metadata) {
   document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
-  document.getElementById("playerTitle").innerHTML = metadata.track.title;
   //document.getElementById("playerTitle").innerHTML = "Pony Should Pony Pony";
   if (metadata.track.title != window.scrollCharacters)
   {
+    document.getElementById("playerTitle").innerHTML = metadata.track.title;
     if (window.scrollInterval)
     {
       clearInterval(window.scrollInterval);
