@@ -1,7 +1,72 @@
 <!DOCTYPE html5>
 <html>
 <head>
+  <meta charset="utf-8" />
   <title>Radio thing</title>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    .player {
+      width: 700px;
+      height: 400px;
+      outline: 1px solid black;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      color: white;
+
+      
+    }
+    .playerGradient {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: -moz-linear-gradient(top, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.94) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.08)), color-stop(100%,rgba(0,0,0,0.94))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.94) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.94) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.94) 100%); /* IE10+ */
+      background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.94) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14000000', endColorstr='#f0000000',GradientType=0 ); /* IE6-9 */
+    }
+    .playerTitle, .playerArtist, .playerAlbum, .playerPlay, .playerListeners {
+      pointer-events: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      font-family: 'Droid Sans', sans-serif;
+      font-weight: 400;
+      position: absolute;
+    }
+    .playerTitle {
+      font-size: 60px; /* 60 - 40 */
+      top: 10px; /* 40 - (60/2) */
+      left: 97px;
+    }
+    .playerArtist, .playerAlbum {
+      font-size: 28px;
+      left: 128px;
+    }
+    .playerArtist {
+      top: 114px; /* 128 - (28/2) */
+      top: 100px; /* 128 - 28 */
+    }
+    .playerAlbum {
+      top: 170px; /* 184 - (28/2) */
+      top: 156px; /* 184 - 28 */
+    }
+    .playerPlay {
+      font-size: 40px;
+      bottom: 47px;
+      right: 116px;
+    }
+    .playerListeners {
+      bottom: 9px;
+      left: 253px;
+    }
+  </style>
 </head>
 <body>
 
@@ -9,23 +74,17 @@
 
   <div id="controls">
     <i>Reference icons:</i> &#9654; &#9658; &#9724;<br />
-    <i>Play/pause:</i> <button id="play">&#9654;</button><br />
     <i>Volume:</i> <input type="range" id="volume" min="0" max="100" value="100" step="1"></input><br />
     <i>State:</i> <span id="state">Stopped</span>
   </div>
 
-  <!--WE NO LONGER NEED THIS
-  <audio id="player" style="display: none;" preload="none">
-    <source src="http://radio.ponytonite.com:8000/stream_ogg" type="audio/ogg" />
-    <source src="http://radio.ponytonite.com:8000/stream" type="audio/mpeg" />
-  </audio>-->
-
-  <br />Metadata:<br />
-  <div id="metadata">
-    Listeners: <span id="listeners">0</span><br />
-    <span id="metaartist"></span> - <span id="metatitle"></span><br />
-    <span id="metaalbum"></span><br />
-    <img id="metaalbumart" src=""></img>
+  <div id="player" class="player">
+    <span id="playerGradient" class="playerGradient"></span>
+    <span id="playerTitle" class="playerTitle">THE SONG TITLE</span>
+    <span id="playerArtist" class="playerArtist">ARTIST</span>
+    <span id="playerAlbum" class="playerAlbum">ALBUM</span>
+    <span id="playerPlay" class="playerPlay">&#9654;</span>
+    <span id="playerListeners" class="playerListeners">Listeners: 0</span>
   </div>
 
   <script type="text/javascript">
@@ -53,11 +112,12 @@
 }
 
 function updateMetadata(metadata) {
-  document.getElementById("metaartist").innerHTML = metadata.track.artist;
-  document.getElementById("metatitle").innerHTML = metadata.track.title;
-  document.getElementById("metaalbum").innerHTML = metadata.track.album || "N/A";
-  document.getElementById("metaalbumart").src = metadata.track.imageurl;
-  document.getElementById("listeners").innerHTML = metadata.listeners;
+  document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
+  document.getElementById("playerTitle").innerHTML = metadata.track.title;
+  document.getElementById("playerArtist").innerHTML = metadata.track.artist;
+  document.getElementById("playerAlbum").innerHTML = metadata.track.album;
+  document.getElementById("playerListeners").innerHTML = "Listeners: " + metadata.listeners;
+
 }
 
 document.body.onload = function() {
@@ -82,7 +142,7 @@ document.body.onload = function() {
 
   window.playerSrc = player.currentSrc;
 
-  document.getElementById("play").addEventListener('click', function(evt) {
+  document.getElementById('player').addEventListener('click', function(evt) {
     if (player.paused) {
       if (window.playerSrc)
         player.src = window.playerSrc;
@@ -111,17 +171,17 @@ document.body.onload = function() {
   });
 
   player.addEventListener('play', function(evt) {
-    document.getElementById("play").innerHTML = "&#9724;";
+    document.getElementById("playerPlay").innerHTML = "&#9724;";
     document.getElementById("state").innerHTML = "Buffering";
   });
   player.addEventListener('abort', function(evt) {
     console.log("ABORTED");
-    document.getElementById("play").innerHTML = "&#9654;";
+    document.getElementById("playerPlay").innerHTML = "&#9654;";
     document.getElementById("state").innerHTML = "Stopped";
   });
   player.addEventListener('pause', function(evt) {
     console.log("PAUSED");
-    document.getElementById("play").innerHTML = "&#9654;";
+    document.getElementById("playerPlay").innerHTML = "&#9654;";
     document.getElementById("state").innerHTML = "Stopped";
   });
 
