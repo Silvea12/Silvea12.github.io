@@ -116,6 +116,7 @@
 
 function updateMetadata(metadata) {
   document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
+  metadata.track.title = "Pony Should Pony Pony";
   //document.getElementById("playerTitle").innerHTML = "Pony Should Pony Pony";
   if (metadata.track.title != window.currTitle)
   {
