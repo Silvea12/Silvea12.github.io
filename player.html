@@ -118,10 +118,11 @@
 function updateMetadata(metadata) {
   document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
   //metadata.track.title = "Pony Should Pony Pony";
-  document.getElementById("playerTitleSpan").innerHTML = metadata.track.title;
   if (metadata.track.title != window.currTitle)
   {
     window.currTitle = metadata.track.title;
+    document.getElementById("playerTitleSpan").style.display = "block";
+    document.getElementById("playerTitleSpan").innerHTML = metadata.track.title;
     if (document.getElementById("playerTitleSpan").clientWidth < document.getElementById("playerTitleSpan").scrollWidth ||
       document.getElementById("playerTitleSpan").clientHeight < document.getElementById("playerTitleSpan").scrollHeight)
     {
@@ -132,7 +133,6 @@ function updateMetadata(metadata) {
     else
     {
       document.getElementById("playerTitleMarquee").style.display = "none";
-      document.getElementById("playerTitleSpan").style.display = "block";
     }
     console.log("OVERFLOWED");
   }
