@@ -117,23 +117,22 @@
 function updateMetadata(metadata) {
   document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
   //document.getElementById("playerTitle").innerHTML = "Pony Should Pony Pony";
-  if (metadata.track.title != window.scrollCharacters)
+  if (metadata.track.title != window.currTitle)
   {
-    document.getElementById("playerTitle").innerHTML = metadata.track.title;
+    window.currTitle = metadata.track.title
     if (window.scrollInterval)
     {
       clearInterval(window.scrollInterval);
       delete window.scrollInterval;
     }
+    document.getElementById("playerTitle").innerHTML = metadata.track.title;
     if (document.getElementById("playerTitle").clientWidth < document.getElementById("playerTitle").scrollWidth ||
       document.getElementById("playerTitle").clientHeight < document.getElementById("playerTitle").scrollHeight)
     {
-      window.scrollCharacters = metadata.track.title;
-      document.getElementById("playerTitle").innerHTML = metadata.track.title + "\xa0|\xa0"
+      window.scrollCharacters = metadata.track.title + "\xa0|\xa0";
       window.scrollInterval = window.setInterval(function() {
-        var currText = document.getElementById("playerTitle").innerHTML;
-        currText = currText.substr(1) + currText.charAt(0);
-        document.getElementById("playerTitle").innerHTML = currText;
+        window.scrollCharacters = window.scrollCharacters.substr(1) + window.scrollCharacters.charAt(0);
+        document.getElementById("playerTitle").innerHTML = window.scrollCharacters;
         console.log("SCROLLED");
       }, 500);
     }
