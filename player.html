@@ -83,7 +83,8 @@
 
   <div id="player" class="player">
     <span id="playerGradient" class="playerGradient"></span>
-    <span id="playerTitle" class="playerTitle">THE SONG TITLE</span>
+    <span id="playerTitleSpan" class="playerTitle">THE SONG TITLE</span>
+    <marquee id="playerTitleMarquee" class="playerTitle" behavior="scroll" direction="left" scrollamount="[INSERT NUMBER HERE OR LEAVE THIS OUT FOR DEFAULT SPEED]">Scrolling niggers here, scrolling continuously!</marquee>
     <span id="playerArtist" class="playerArtist">ARTIST</span>
     <span id="playerAlbum" class="playerAlbum">ALBUM</span>
     <span id="playerPlay" class="playerPlay">&#9654;</span>
@@ -117,24 +118,21 @@
 function updateMetadata(metadata) {
   document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
   //metadata.track.title = "Pony Should Pony Pony";
+  document.getElementById("playerTitleSpan").innerHTML = metadata.track.title;
   if (metadata.track.title != window.currTitle)
   {
-    window.currTitle = metadata.track.title
-    if (window.scrollInterval)
+    window.currTitle = metadata.track.title;
+    if (document.getElementById("playerTitleSpan").clientWidth < document.getElementById("playerTitleSpan").scrollWidth ||
+      document.getElementById("playerTitleSpan").clientHeight < document.getElementById("playerTitleSpan").scrollHeight)
     {
-      clearInterval(window.scrollInterval);
-      delete window.scrollInterval;
+      document.getElementById("playerTitleSpan").style.display = "none";
+      document.getElementById("playerTitleMarquee").style.display = "block";
+      document.getElementById("playerTitleMarquee").innerHTML = metadata.track.title;
     }
-    document.getElementById("playerTitle").innerHTML = metadata.track.title;
-    if (document.getElementById("playerTitle").clientWidth < document.getElementById("playerTitle").scrollWidth ||
-      document.getElementById("playerTitle").clientHeight < document.getElementById("playerTitle").scrollHeight)
+    else
     {
-      window.scrollCharacters = metadata.track.title.replace(/ /g, "\xa0") + "\xa0|\xa0";
-      window.scrollInterval = window.setInterval(function() {
-        window.scrollCharacters = window.scrollCharacters.substr(1) + window.scrollCharacters.charAt(0);
-        document.getElementById("playerTitle").innerHTML = window.scrollCharacters;
-        console.log("SCROLLED");
-      }, 500);
+      document.getElementById("playerTitleMarquee").style.display = "none";
+      document.getElementById("playerTitleSpan").style.display = "block";
     }
     console.log("OVERFLOWED");
   }
