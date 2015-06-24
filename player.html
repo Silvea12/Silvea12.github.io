@@ -81,10 +81,10 @@
       display: block;
       width: 200%;
       position: absolute;
-      -webkit-animation: marquee 6s linear infinite;
+      /*-webkit-animation: marquee 6s linear infinite;
       -moz-animation: marquee 6s linear infinite;
       -o-animation: marquee 6s linear infinite;
-      animation: marquee 6s linear infinite;
+      animation: marquee 6s linear infinite;*/
       overflow: hidden;
     }
     .marquee >  div > span {
@@ -94,24 +94,24 @@
       /*overflow: visible;*/
     }
     @-webkit-keyframes marquee {
-      0% { left: 10%; }
-      100% { left: -90%; }
+      0% { left: 5%; }
+      100% { left: -95%; }
     }
     @-moz-keyframes marquee {
-      0% { left: 10%; }
-      100% { left: -90%; }
+      0% { left: 5%; }
+      100% { left: -95%; }
     }
     @-ms-keyframes marquee {
-      0% { left: 10%; }
-      100% { left: -90%; }
+      0% { left: 5%; }
+      100% { left: -95%; }
     }
     @-o-keyframes marquee {
-      0% { left: 10%; }
-      100% { left: -90%; }
+      0% { left: 5%; }
+      100% { left: -95%; }
     }
     @keyframes marquee {
-      0% { left: 10%; }
-      100% { left: -90%; }
+      0% { left: 5%; }
+      100% { left: -95%; }
     }
   </style>
 </head>
@@ -170,7 +170,13 @@ function updateMetadata(metadata) {
       document.getElementById("playerTitle").clientHeight < document.getElementById("playerTitle").scrollHeight)
     {
       // document.getElementById("playerTitle").classList.add("marquee");
-      document.getElementById("playerTitle").innerHTML = "<div class='marquee' style='width: " + (document.getElementById("playerTitle").scrollWidth + 80) + "px'><div><span>" + metadata.track.title + "</span><span>" + metadata.track.title + "</span></div></div>";
+      var slideDuration = (document.getElementById("playerTitle").scrollWidth + 80) / 50;
+      document.getElementById("playerTitle").innerHTML = "<div class='marquee' style='width: " + (document.getElementById("playerTitle").scrollWidth + 80) + "px'><div style='" + 
+        "-webkit-animation: marquee " + slideDuration + "s linear infinite;" +
+        "-moz-animation: marquee " + slideDuration + "s linear infinite;" +
+        "-o-animation: marquee " + slideDuration + "s linear infinite;" +
+        "animation: marquee " + slideDuration + "s linear infinite;" +
+       "'><span>" + metadata.track.title + "</span><span>" + metadata.track.title + "</span></div></div>";
       console.log("OVERFLOWED");
     }
     else
