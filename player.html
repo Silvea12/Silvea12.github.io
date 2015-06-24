@@ -164,7 +164,6 @@ function updateMetadata(metadata) {
   if (metadata.track.title != window.currTitle)
   {
     window.currTitle = metadata.track.title;
-    document.getElementById("playerTitle").style.display = "block";
     document.getElementById("playerTitle").innerHTML = metadata.track.title;
     if (document.getElementById("playerTitle").clientWidth < document.getElementById("playerTitle").scrollWidth ||
       document.getElementById("playerTitle").clientHeight < document.getElementById("playerTitle").scrollHeight)
