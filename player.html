@@ -70,6 +70,50 @@
       left: 270px;
     }
   </style>
+
+  <style type="text/css">
+    .marquee {
+      display: block;
+      position: relative;
+      height: 100%;
+    }
+    .marquee div {
+      display: block;
+      width: 200%;
+      position: absolute;
+      -webkit-animation: marquee 6s linear infinite;
+      -moz-animation: marquee 6s linear infinite;
+      -o-animation: marquee 6s linear infinite;
+      animation: marquee 6s linear infinite;
+      overflow: hidden;
+    }
+    .marquee >  div > span {
+      float: left;
+      /*margin-right: 10px;*/
+      width: 50%;
+      /*overflow: visible;*/
+    }
+    @-webkit-keyframes marquee {
+      0% { left: 10%; }
+      100% { left: -100%; }
+    }
+    @-moz-keyframes marquee {
+      0% { left: 10%; }
+      100% { left: -100%; }
+    }
+    @-ms-keyframes marquee {
+      0% { left: 10%; }
+      100% { left: -100%; }
+    }
+    @-o-keyframes marquee {
+      0% { left: 10%; }
+      100% { left: -100%; }
+    }
+    @keyframes marquee {
+      0% { left: 10%; }
+      100% { left: -100%; }
+    }
+  </style>
 </head>
 <body>
 
@@ -83,8 +127,7 @@
 
   <div id="player" class="player">
     <span id="playerGradient" class="playerGradient"></span>
-    <span id="playerTitleSpan" class="playerTitle">THE SONG TITLE</span>
-    <marquee id="playerTitleMarquee" class="playerTitle" behavior="scroll" direction="left" scrollamount="[INSERT NUMBER HERE OR LEAVE THIS OUT FOR DEFAULT SPEED]">Scrolling niggers here, scrolling continuously!</marquee>
+    <span id="playerTitle" class="playerTitle">THE SONG TITLE</span>
     <span id="playerArtist" class="playerArtist">ARTIST</span>
     <span id="playerAlbum" class="playerAlbum">ALBUM</span>
     <span id="playerPlay" class="playerPlay">&#9654;</span>
@@ -121,20 +164,19 @@ function updateMetadata(metadata) {
   if (metadata.track.title != window.currTitle)
   {
     window.currTitle = metadata.track.title;
-    document.getElementById("playerTitleSpan").style.display = "block";
-    document.getElementById("playerTitleSpan").innerHTML = metadata.track.title;
-    if (document.getElementById("playerTitleSpan").clientWidth < document.getElementById("playerTitleSpan").scrollWidth ||
-      document.getElementById("playerTitleSpan").clientHeight < document.getElementById("playerTitleSpan").scrollHeight)
+    document.getElementById("playerTitle").style.display = "block";
+    document.getElementById("playerTitle").innerHTML = metadata.track.title;
+    if (document.getElementById("playerTitle").clientWidth < document.getElementById("playerTitle").scrollWidth ||
+      document.getElementById("playerTitle").clientHeight < document.getElementById("playerTitle").scrollHeight)
     {
-      document.getElementById("playerTitleSpan").style.display = "none";
-      document.getElementById("playerTitleMarquee").style.display = "block";
-      document.getElementById("playerTitleMarquee").innerHTML = metadata.track.title;
+      // document.getElementById("playerTitle").classList.add("marquee");
+      document.getElementById("playerTitle").innerHTML = "<div class='marquee' style='width: " + (document.getElementById("playerTitle").scrollWidth + 80) + "px'><div><span>" + metadata.track.title + "</span><span>" + metadata.track.title + "</span></div></div>";
+      console.log("OVERFLOWED");
     }
     else
     {
-      document.getElementById("playerTitleMarquee").style.display = "none";
+      // document.getElementById("playerTitle").classList.remove("marquee");
     }
-    console.log("OVERFLOWED");
   }
   document.getElementById("playerArtist").innerHTML = metadata.track.artist;
   document.getElementById("playerAlbum").innerHTML = metadata.track.album;
@@ -265,6 +307,7 @@ function updateMetadata(metadata) {
     }
   });
 })();
+
 </script>
 
 </body>
