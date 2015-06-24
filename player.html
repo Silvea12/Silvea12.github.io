@@ -142,7 +142,7 @@ function updateMetadata(metadata) {
 
 }
 
-document.body.onload = function() {
+(function() {
   //window.player = document.getElementById("player");
   window.player = new Audio();
   player.preload = "none";
@@ -264,7 +264,7 @@ document.body.onload = function() {
       console.log(player.buffered.length);
     }
   });
-};
+})();
 </script>
 
 </body>
