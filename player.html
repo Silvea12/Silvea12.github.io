@@ -185,7 +185,7 @@ function updateMetadata(metadata) {
     }
   }
   document.getElementById("playerArtist").innerHTML = metadata.track.artist;
-  document.getElementById("playerAlbum").innerHTML = metadata.track.album;
+  document.getElementById("playerAlbum").innerHTML = (metadata.track.album == "Unknown" ? "" : metadata.track.album);
   document.getElementById("playerListeners").innerHTML = "Listeners: " + metadata.listeners;
 
 }
