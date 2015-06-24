@@ -21,7 +21,7 @@
 	background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.94) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14000000', endColorstr='#f0000000',GradientType=0 ); /* IE6-9 */
 }
-.playerTitle, .playerArtist, .playerAlbum, .playerPlay, .playerListeners {
+.playerTitle, .playerArtist, .playerAlbum, .playerPlay, .playerListeners, .playerGradient {
 	pointer-events: none;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
