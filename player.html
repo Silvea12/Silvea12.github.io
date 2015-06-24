@@ -12,7 +12,7 @@
       background-size: cover;
       background-position: center;
       color: white;
-      
+      text-shadow: 0px 0px 8px black;
     }
     .playerGradient {
       position: absolute;
@@ -159,6 +159,7 @@
 }
 
 function updateMetadata(metadata) {
+  //metadata.track.imageurl = "https://f1.bcbits.com/img/a0860084365_10.jpg";
   document.getElementsByClassName("player")[0].style.backgroundImage = "url(" + metadata.track.imageurl + ")";
   //metadata.track.title = "Pony Should Pony Pony";
   if (metadata.track.title != window.currTitle)
