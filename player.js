@@ -85,8 +85,8 @@ PikaPlayer.prototype.displayMetadata = function(metadata) {
 
 	if (self.currTitle === metadata.track.title)
 		return;
-
-	self.currTitle = metadata.track.title;
+	else
+		self.currTitle = metadata.track.title;
 
 	var fixWrap = function(element, value, scrollSpeed, splitDistance) {
 		scrollSpeed = (scrollSpeed === undefined) ? 50 : scrollSpeed
