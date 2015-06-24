@@ -46,13 +46,14 @@
 .playerArtist, .playerAlbum {
 	font-size: 28px;
 	left: 128px;
+	height: 32px;
+	width: 520px;
+	overflow: hidden;
 }
 .playerArtist {
-	top: 114px; /* 128 - (28/2) */
 	top: 100px; /* 128 - 28 */
 }
 .playerAlbum {
-	top: 170px; /* 184 - (28/2) */
 	top: 156px; /* 184 - 28 */
 }
 .playerPlay {

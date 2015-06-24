@@ -83,29 +83,36 @@ PikaPlayer.prototype.playPause = function() {
 PikaPlayer.prototype.displayMetadata = function(metadata) {
 	var self = this;
 
-	self.elems.player.style.backgroundImage = "url(" + metadata.track.imageurl + ")";
-	self.elems.playerArtist.innerHTML = metadata.track.artist;
-	self.elems.playerAlbum.innerHTML = (metadata.track.album == "Unknown" ? "" : metadata.track.album);
-	self.elems.playerListeners.innerHTML = "Listeners: " + metadata.listeners;
-	
-	if (metadata.track.title != window.currTitle)
-	{
-		window.currTitle = metadata.track.title;
-		self.elems.playerTitle.innerHTML = metadata.track.title;
+	if (self.currTitle === metadata.track.title)
+		return;
 
-		if (self.elems.playerTitle.clientWidth < self.elems.playerTitle.scrollWidth ||
-		self.elems.playerTitle.clientHeight < self.elems.playerTitle.scrollHeight)
+	self.currTitle = metadata.track.title;
+
+	var fixWrap = function(element, value, scrollSpeed, splitDistance) {
+		scrollSpeed = (scrollSpeed === undefined) ? 50 : scrollSpeed
+		splitDistance = (splitDistance === undefined) ? 80 : splitDistance
+
+		element.innerHTML = value;
+
+		if (element.clientWidth < element.scrollWidth)
 		{
-			// self.elems.playerTitle.classList.add("marquee");
-			var slideDuration = (self.elems.playerTitle.scrollWidth + 80) / 50;
-			self.elems.playerTitle.innerHTML = "<div class='marquee' style='width: " + (self.elems.playerTitle.scrollWidth + 80) + "px'><div style='" + 
+			var slideDuration = (element.scrollWidth + splitDistance) / scrollSpeed;
+			element.innerHTML = "<div class='marquee' style='width: " + (element.scrollWidth + splitDistance) + "px'><div style='" + 
 			"-webkit-animation: marquee " + slideDuration + "s linear infinite;" +
 			"-moz-animation: marquee " + slideDuration + "s linear infinite;" +
 			"-o-animation: marquee " + slideDuration + "s linear infinite;" +
 			"animation: marquee " + slideDuration + "s linear infinite;" +
-			"'><span>" + metadata.track.title + "</span><span>" + metadata.track.title + "</span></div></div>";
+			"'><span>" + value + "</span><span>" + value + "</span></div></div>";
 		}
-	}
+	};
+
+	self.elems.player.style.backgroundImage = "url(" + metadata.track.imageurl + ")";
+	self.elems.playerListeners.innerHTML = "Listeners: " + metadata.listeners;
+	
+	fixWrap(self.elems.playerTitle, metadata.track.title, 50, 80);
+	fixWrap(self.elems.playerArtist, metadata.track.artist, 25, 70);
+	fixWrap(self.elems.playerAlbum, (metadata.track.album == "Unknown" ? "" : metadata.track.album), 25, 70);
+
 };
 
 PikaPlayer.prototype.getMetadata = function() {
