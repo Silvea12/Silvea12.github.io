@@ -118,7 +118,7 @@ PikaPlayer.prototype.displayMetadata = function(metadata) {
 PikaPlayer.prototype.getMetadata = function() {
 	var self = this;
 
-	self.util.getJSON("http://radio.ponytonite.com:2199/rpc/ponytonite/streaminfo.get", function(data) {
+	self.util.getJSON("http://radio.ponytonite.com:2199/rpc/ponytonite/streaminfo.get#" + Date.now(), function(data) {
 			if (data === false)
 				console.warn("Failed to get metadata!");
 			else
@@ -163,7 +163,7 @@ PikaPlayer.prototype.initPlayer = function() {
 	self.elems.playerVolume.min = 0;
 	self.elems.playerVolume.max = 100;
 	self.elems.playerVolume.value = 100;
-	self.elems.playerVolume.step = 1;
+	self.elems.playerVolume.step = "any";
 	self.elems.player.appendChild(self.elems.playerVolume);
 
 	document.body.appendChild(self.elems.player);
