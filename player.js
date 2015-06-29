@@ -201,7 +201,7 @@ PikaPlayer.prototype.initPlayer = function() {
 	};
 
 	var playListener = function(evt) {
-		self.elems.playerPlay.innerHTML = "&#9724;";
+		self.elems.playerPlay.innerHTML = "&#9632;";
 	};
 
 	var stopListener = function(evt) {
