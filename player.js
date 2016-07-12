@@ -1,7 +1,7 @@
 function PikaPlayer()
 {
 	var self = this;
-	
+
 
 	self.elems = {};
 	self.currTitle = "";
@@ -15,12 +15,14 @@ function PikaPlayer()
 		console.warn("HTML5 localStorage not supported in your browser!");
 	}
 
-	if (self.player.canPlayType("audio/ogg") !== "no" &&
+	alert("audio/ogg: " + self.player.canPlayType("audio/ogg") + ", audio/mpeg: " + self.player.canPlayType("audio/mpeg"));
+
+	/*if (self.player.canPlayType("audio/ogg") !== "no" &&
 		self.player.canPlayType("audio/ogg") !== "")
-		self.playerSrc = "http://radio.ponytonite.com:8000/stream_ogg";
-	else if (self.player.canPlayType("audio/mpeg") !== "no" &&
+		self.playerSrc = "http://192.99.131.205:8000/stream.ogg";
+	else */if (self.player.canPlayType("audio/mpeg") !== "no" &&
 		self.player.canPlayType("audio/mpeg") !== "")
-		self.playerSrc = "http://radio.ponytonite.com:8000/stream";
+		self.playerSrc = "http://192.99.131.205:8000/stream.mp3";
 	else
 		throw new Error("Cannot play either OGG or MPEG audio in this browser!");
 }
@@ -83,6 +85,15 @@ PikaPlayer.prototype.playPause = function() {
 PikaPlayer.prototype.displayMetadata = function(metadata) {
 	var self = this;
 
+	metadata = {
+		track: {
+			title: "A song title 1234567890abcdefghijkl mnopqrs tuvwx yz",
+			artist: "Song artist 1234567890abcdefghijkl mnopqrs tuvwx yz",
+			album: "The album 1234567890abcdefghijkl mnopqrs tuvwx yz",
+			imageurl: "/albumart.jpg"
+		}
+	};
+
 	if (self.currTitle === metadata.track.title)
 		return;
 	else
@@ -97,7 +108,7 @@ PikaPlayer.prototype.displayMetadata = function(metadata) {
 		if (element.clientWidth < element.scrollWidth)
 		{
 			var slideDuration = (element.scrollWidth + splitDistance) / scrollSpeed;
-			element.innerHTML = "<div class='marquee' style='width: " + (element.scrollWidth + splitDistance) + "px'><div style='" + 
+			element.innerHTML = "<div class='marquee' style='width: " + (element.scrollWidth + splitDistance) + "px'><div style='" +
 			"-webkit-animation: marquee " + slideDuration + "s linear infinite;" +
 			"-moz-animation: marquee " + slideDuration + "s linear infinite;" +
 			"-o-animation: marquee " + slideDuration + "s linear infinite;" +
@@ -108,7 +119,7 @@ PikaPlayer.prototype.displayMetadata = function(metadata) {
 
 	self.elems.player.style.backgroundImage = "url(" + metadata.track.imageurl + ")";
 	self.elems.playerListeners.innerHTML = "Listeners: " + metadata.listeners;
-	
+
 	fixWrap(self.elems.playerTitle, metadata.track.title, 50, 80);
 	fixWrap(self.elems.playerArtist, metadata.track.artist, 25, 70);
 	fixWrap(self.elems.playerAlbum, (metadata.track.album == "Unknown" ? "" : metadata.track.album), 25, 70);
@@ -117,6 +128,9 @@ PikaPlayer.prototype.displayMetadata = function(metadata) {
 
 PikaPlayer.prototype.getMetadata = function() {
 	var self = this;
+
+	self.displayMetadata({});
+	return;
 
 	self.util.getJSON("http://radio.ponytonite.com:2199/rpc/ponytonite/streaminfo.get#" + Date.now(), function(data) {
 			if (data === false)
