@@ -71,6 +71,7 @@
 		document.body.addEventListener('touchstart', function(evt) {
 			evt.preventDefault();
 			setCircle(evt.targetTouches[0]);
+			navigator.vibrate(100);
 		});
 
 		document.body.addEventListener('touchmove', function(evt) {
