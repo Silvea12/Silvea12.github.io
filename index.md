@@ -79,5 +79,5 @@ References
 Volunteer work
 ==============
 
-System administration + disaster recovery for Ubuntu Server for Lumineko  
-Professional moderation of online special interest communities and user disputes, remaining impartial in judgement.
+- System administration + disaster recovery for Ubuntu Server for Lumineko
+- Professional moderation of online special interest communities and user disputes, remaining impartial in judgement
