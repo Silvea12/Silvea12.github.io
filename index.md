@@ -5,9 +5,10 @@ About me
 ========
 
 ## Fact sheet
-- Born: 10 April 1997 in Australia  
-- Residence: Offenbach am Main area  
-- Main focus: Full stack development, web security, reverse engineering  
+- Born: 10 April 1997
+- Nationality: Australian
+- Residence: Offenbach am Main area
+- Main focus: Full stack development, web security, reverse engineering
 
 ## Introduction
 I'm a full stack developer, specialising in Javascript and Golang. I strive to ensure my solutions are of high quality, always learning from those around me in order to develop my own skill and style.
