@@ -7,7 +7,7 @@ About me
 ## Fact sheet
 - Born: 10 April 1997
 - Nationality: Australian
-- Residence: Offenbach am Main area
+- Residence: Offenbach am Main area, Germany
 - Main focus: Full stack development, web security, reverse engineering
 
 ## Introduction
