@@ -6,11 +6,11 @@ About me
 
 ## Fact sheet
 - Nationality: Australian
-- Residence: Offenbach am Main area, Germany
+- Residence: Melbourne, Victoria
 - Main focus: Full stack development, web security, reverse engineering
 
 ## Introduction
-I'm a full stack developer, specialising in Javascript and Golang. I strive to ensure my solutions are of high quality, always learning from those around me in order to develop my own skill and style.
+I'm a full stack developer, specialising in JavaScript and Golang. I strive to ensure my solutions are of high quality, always learning from those around me in order to develop my own skill and style.
 
 My strengths are adapting to new challenges and systems when presented to me, and learning the finer details to work with it efficiently.
 
@@ -19,7 +19,7 @@ I also enjoy reverse engineering protocols and systems/applications. I do basic 
 Skills
 ======
 
-- Languages: Golang, Javascript (ES6+), RegExp (JS), HTML5, PHP, Bash shell, CSS3, .NET IL, MySQL
+- Languages: Golang, JavaScript (ES6+), RegExp (JS), HTML5, PHP, Bash shell, CSS3, .NET IL, MySQL
 - Frameworks: Riot.js, Redux, Bootstrap, Electron, Docker
 - Spoken: English
 - Methodologies: Git flow, Kanban
