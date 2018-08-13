@@ -32,7 +32,7 @@ Work history
 ============
 
 ## Picarto.tv
-Full stack developer for 3Logic Systems GmbH/Picarto.TV ( [http://3logic.de/](http://3logic.de/) [https://picarto.tv/](https://picarto.tv/) )
+DevOps + Full stack developer for 3Logic Systems GmbH/Picarto.TV ( [http://3logic.de/](http://3logic.de/) [https://picarto.tv/](https://picarto.tv/) )
 
 ### Employment
 June 2014 - August 2018
