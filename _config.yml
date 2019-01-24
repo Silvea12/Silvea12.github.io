@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Andrew Silver
-email: andrew.silver0@gmail.com
+email: andrew.silver0@protonmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Full Stack Developer
 baseurl: "/" # the subpath of your site, e.g. /blog
