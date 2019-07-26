@@ -19,8 +19,8 @@ I also enjoy reverse engineering protocols and systems/applications. I do basic 
 Skills
 ======
 
-- Languages: Golang, JavaScript (ES6+), RegExp (JS), HTML5, PHP, Bash shell, CSS3, .NET IL, MySQL
-- Frameworks: Riot.js, Redux, Bootstrap, Electron, Docker
+- Languages: JavaScript (ES6+), RegExp (JS), Golang, Rust, HTML5, PHP, Bash shell, CSS3, MySQL, C++, .NET IL
+- Frameworks: Riot.js, Redux, Bootstrap, Electron, Docker, Vue
 - Spoken: English
 - Methodologies: Git flow, Kanban
 - Operating Systems: Arch Linux, Ubuntu
