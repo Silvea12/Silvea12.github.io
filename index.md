@@ -46,6 +46,17 @@ June 2014 - August 2018
 - Performed security audits on internal systems
 - Developed and maintained security systems for access to API
 
+## Wicked Witch Software
+Software/games developer for Wicked Witch Software, in VR, mobile dev and console dev ( [http://wickedwitchsoftware.com/](http://wickedwitchsoftware.com/) )
+
+### Employment
+September 2018 - Ongoing
+
+### Accomplishments
+- Worked on netcode for Age of Empires II Definitive Edition
+- Worked on the company's flagship first-party title, Catapult King, maintaining and updating the codebase to introduce new user flows for monetisation
+- Worked on multiple (NDA) projects for multiple clients as the primary developer
+
 Projects
 ========
 
@@ -58,7 +69,12 @@ A custom classifier on top of OpenCV 2.4, written in C++ with libraries for use 
 ### A MikuMikuDance skeletal animation controlled joystick emulator, written in ANSI C
 <span class="hide-screen">[https://gitlab.com/Silvea12/vJoy-MMD](https://gitlab.com/Silvea12/vJoy-MMD)<br></span>
 Reverse engineered proprietary skeletal and animation formats, interpreted and replayed via joystick emulation software.  
-Project made for a well known professional laserist + animatronics enthusiast
+Project made for a well known professional laserist + animatronics enthusiast.
+
+## PuppetMaster <span class="hide-print">[{% include icon-link.svg %}](https://tapghoul.itch.io/puppetmaster)</span>
+### A tool for talking as multiple emulated users/avatars in a Discord server chat
+<span class="hide-screen">[https://tapghoul.itch.io/puppetmaster](https://tapghoul.itch.io/puppetmaster)<br></span>
+A tool to enable roleplayers of all walks, such as Dungeons and Dragons players, to more easily and immersively handle characterisation of their NPCs in games, as well as enhancing other forms of roleplay and community interaction.
 
 Education
 =========
