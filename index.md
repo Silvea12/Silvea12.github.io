@@ -91,9 +91,12 @@ References
 
 - Mehmet Karatas (Picarto.TV/3Logic Systems GmbH CEO)  
   Email: [karatas@picarto.tv](mailto:karatas@picarto.tv)
-- Ben Carruthers (Wicked Witch Software)  
+- Ben Carruthers (Wicked Witch Software Associate Producer)  
   Email: [b.carruthers@gmail.com](mailto:b.carruthers@gmail.com)  
   Tel: [0413879052](tel:+61413879052)
+- Daniel Visser (Wicked Witch Software CEO)  
+  Email: [danielv@wicked-witch.com.au](mailto:danielv@wicked-witch.com.au)  
+  Tel: [0425740497](tel:+61425740497)
 
 Volunteer work
 ==============
