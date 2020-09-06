@@ -50,12 +50,21 @@ June 2014 - August 2018
 Software/games developer for Wicked Witch Software, in VR, mobile dev and console dev ( [http://wickedwitchsoftware.com/](http://wickedwitchsoftware.com/) )
 
 ### Employment
-September 2018 - Ongoing
+September 2018 - September 2019
 
 ### Accomplishments
 - Worked on netcode for Age of Empires II Definitive Edition
 - Worked on the company's flagship first-party title, Catapult King, maintaining and updating the codebase to introduce new user flows for monetisation
 - Worked on multiple (NDA) projects for multiple clients as the primary developer
+
+## BrykGroup
+Full stack rails + typescript (+ others) developer for web finance and other applications ( [https://brykgroup.com/](https://brykgroup.com/) )
+
+## Employment
+October 2019 - Current
+
+### Accomplishments
+- Delivered multiple fully working demos written from the ground up for sales teams under short timescales
 
 Projects
 ========
