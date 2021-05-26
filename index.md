@@ -80,7 +80,7 @@ A custom classifier on top of OpenCV 2.4, written in C++ with libraries for use 
 Reverse engineered proprietary skeletal and animation formats, interpreted and replayed via joystick emulation software.  
 Project made for a well known professional laserist + animatronics enthusiast.
 
-## PuppetMaster <span class="hide-print">[{% include icon-link.svg %}](https://tapghoul.itch.io/puppetmaster)</span>
+## Puppetmaster <span class="hide-print">[{% include icon-link.svg %}](https://tapghoul.itch.io/puppetmaster)</span>
 ### A tool for talking as multiple emulated users/avatars in a Discord server chat
 <span class="hide-screen">[https://tapghoul.itch.io/puppetmaster](https://tapghoul.itch.io/puppetmaster)<br></span>
 A tool to enable roleplayers of all walks, such as Dungeons and Dragons players, to more easily and immersively handle characterisation of their NPCs in games, as well as enhancing other forms of roleplay and community interaction.
